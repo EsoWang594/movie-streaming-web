@@ -2,30 +2,37 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Admin Quản lý Phim</title>
+  <title>Admin - Movie Streaming</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <a href="index.html">Trang chủ</a>
-</header>
+  <header>
+    <h1>Admin Panel</h1>
+    <nav>
+      <a href="index.html">Trang chủ</a>
+      <a href="login.html" id="login-link">Đăng nhập</a>
+      <a href="#" id="logout-link" style="display:none;">Đăng xuất</a>
+      <a href="admin.html" id="admin-link" style="display:none;">Admin</a>
+      <a href="#" id="register-link">Đăng ký</a>
+    </nav>
+  </header>
 
-<main>
-  <h1>Quản lý Phim</h1>
-  <form id="add-movie-form">
-    <input type="text" id="title" placeholder="Tên phim" required>
-    <input type="text" id="poster" placeholder="Link poster" required>
-    <input type="text" id="videoUrl" placeholder="Link video" required>
-    <textarea id="description" placeholder="Mô tả"></textarea>
-    <input type="text" id="genre" placeholder="Thể loại">
-    <input type="number" id="year" placeholder="Năm">
-    <button type="submit">Thêm phim</button>
-  </form>
+  <main>
+    <h2>Thêm phim mới</h2>
+    <form id="add-movie-form">
+      <input type="text" id="title" placeholder="Tên phim" required>
+      <input type="text" id="poster" placeholder="URL poster" required>
+      <input type="text" id="videoUrl" placeholder="URL video" required>
+      <textarea id="description" placeholder="Mô tả phim" required></textarea>
+      <input type="text" id="genre" placeholder="Thể loại" required>
+      <input type="number" id="year" placeholder="Năm sản xuất" required>
+      <button type="submit">Thêm phim</button>
+    </form>
 
-  <h2>Danh sách phim</h2>
-  <div id="admin-movie-list"></div>
-</main>
+    <h2>Danh sách phim</h2>
+    <div id="admin-movie-list"></div>
+  </main>
 
-<script src="js/main.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

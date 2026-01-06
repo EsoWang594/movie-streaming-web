@@ -29,15 +29,17 @@ const userSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // Hash password trước khi lưu
-userSchema.pre('save', async function(next) {
-  if (!this.isModified('password')) return next();
+userSchema.pre('save', async function() {
+  // Chỉ hash password nếu password được thay đổi hoặc là document mới
+  if (!this.isModified('password')) {
+    return;
+  }
 
   try {
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
-    next();
   } catch (err) {
-    next(err);
+    throw err;
   }
 });
 

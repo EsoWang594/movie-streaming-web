@@ -42,6 +42,27 @@ router.post('/', auth, adminOnly, async (req, res) => {
   }
 });
 
+// Cập nhật phim (admin only)
+router.put('/:id', auth, adminOnly, async (req, res) => {
+  try {
+    const movie = await Movie.findById(req.params.id);
+    if (!movie) return res.status(404).json({ msg: "Movie not found" });
+
+    // Cập nhật các field được gửi lên
+    Object.keys(req.body).forEach(key => {
+      if (req.body[key] !== undefined) {
+        movie[key] = req.body[key];
+      }
+    });
+
+    await movie.save();
+    res.json(movie);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ msg: "Server error" });
+  }
+});
+
 // Xóa phim (admin only)
 router.delete('/:id', auth, adminOnly, async (req, res) => {
   try {

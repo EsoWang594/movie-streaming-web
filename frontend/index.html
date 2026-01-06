@@ -2,26 +2,27 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>CineMax - Trang chủ</title>
+  <title>Movie Streaming</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- HEADER -->
   <header>
-    <h1>🎬 CineMax</h1>
-    <div id="auth-links">
+    <h1>Movie Streaming</h1>
+    <nav>
+      <a href="index.html">Trang chủ</a>
       <a href="login.html" id="login-link">Đăng nhập</a>
-      <a href="#" id="logout-link" style="display:none">Đăng xuất</a>
-      <a href="admin.html" id="admin-link" style="display:none">Admin</a>
-    </div>
+      <a href="#" id="logout-link" style="display:none;">Đăng xuất</a>
+      <a href="admin.html" id="admin-link" style="display:none;">Admin</a>
+      <a href="#" id="register-link">Đăng ký</a>
+    </nav>
   </header>
 
-  <main>
-    <section class="carousel" id="featured-movies"></section>
-    <section>
-      <h2>Phim phổ biến</h2>
-      <div id="list" class="movie-grid"></div>
-    </section>
-  </main>
+  <!-- CAROUSEL FEATURED -->
+  <section id="featured-movies" class="carousel"></section>
+
+  <!-- MOVIE GRID -->
+  <section class="movie-grid" id="list"></section>
 
   <script src="js/main.js"></script>
 </body>

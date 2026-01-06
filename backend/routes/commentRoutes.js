@@ -29,32 +29,39 @@ router.post('/', auth, async (req, res) => {
     const { movie, content, rating } = req.body;
 
     if (!movie || !content) {
-      return res.status(400).json({ msg: "Movie and content are required" });
+      return res.status(400).json({ msg: "Vui lòng nhập đầy đủ thông tin" });
+    }
+
+    if (!content.trim()) {
+      return res.status(400).json({ msg: "Nội dung bình luận không được để trống" });
     }
 
     // Kiểm tra movie tồn tại
     const movieExists = await Movie.findById(movie);
-    if (!movieExists) return res.status(404).json({ msg: "Movie not found" });
+    if (!movieExists) return res.status(404).json({ msg: "Không tìm thấy phim" });
 
     // Validate rating
-    if (rating && (rating < 1 || rating > 5)) {
-      return res.status(400).json({ msg: "Rating must be 1-5" });
+    if (rating !== undefined && rating !== null) {
+      const ratingNum = parseInt(rating);
+      if (isNaN(ratingNum) || ratingNum < 1 || ratingNum > 5) {
+        return res.status(400).json({ msg: "Điểm đánh giá phải từ 1 đến 5" });
+      }
     }
 
     const comment = new Comment({
       user: req.user.id,
       movie,
-      content,
-      rating
+      content: content.trim(),
+      rating: rating ? parseInt(rating) : undefined
     });
 
     await comment.save();
-    const savedComment = await comment.populate('user', 'username');
+    const savedComment = await Comment.findById(comment._id).populate('user', 'username');
     res.status(201).json(savedComment);
 
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ msg: "Server error" });
+    console.error("Comment error:", err);
+    res.status(500).json({ msg: "Lỗi server: " + err.message });
   }
 });
 

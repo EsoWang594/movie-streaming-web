@@ -1,0 +1,8 @@
+# Node & project
+node_modules/
+*.env
+.DS_Store
+
+# Optional: file log, build
+dist/
+build/

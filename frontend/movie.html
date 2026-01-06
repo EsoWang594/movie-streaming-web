@@ -2,30 +2,42 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Xem Phim</title>
+  <title>Chi tiết phim</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <a href="index.html">Trang chủ</a>
-  <span id="user-info"></span>
-</header>
+  <header>
+    <h1>Chi tiết phim</h1>
+    <nav>
+      <a href="index.html">Trang chủ</a>
+      <a href="login.html" id="login-link">Đăng nhập</a>
+      <a href="#" id="logout-link" style="display:none;">Đăng xuất</a>
+      <a href="admin.html" id="admin-link" style="display:none;">Admin</a>
+      <a href="#" id="register-link">Đăng ký</a>
+    </nav>
+  </header>
 
-<main>
-  <h1 id="movie-title"></h1>
-  <video id="movie-video" controls></video>
-  <p id="movie-desc"></p>
+  <main>
+    <h2 id="movie-title"></h2>
+    <div id="video-container">
+      <video id="movie-video" controls style="display:none;"></video>
+      <iframe id="movie-iframe" style="display:none;" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <p id="movie-desc"></p>
 
-  <h2>Bình luận</h2>
-  <div id="comment-list"></div>
+    <!-- Bình luận -->
+    <section id="comments">
+      <h3>Bình luận</h3>
+      <div id="comment-list"></div>
 
-  <form id="comment-form">
-    <textarea id="comment-content" placeholder="Viết bình luận..." required></textarea>
-    <input type="number" id="comment-rating" min="1" max="5" placeholder="Rating 1-5">
-    <button type="submit">Gửi</button>
-  </form>
-</main>
+      <form id="comment-form">
+        <textarea id="comment-content" placeholder="Nhập bình luận" required></textarea>
+        <input type="number" id="comment-rating" min="1" max="5" placeholder="Điểm (1-5)" required>
+        <button type="submit">Gửi bình luận</button>
+      </form>
+    </section>
+  </main>
 
-<script src="js/main.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
