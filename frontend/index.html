@@ -1,3 +1,28 @@
-<h1>🎬 Movie Streaming</h1>
-<div id="list"></div>
-<script src="js/main.js"></script>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>CineMax - Trang chủ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🎬 CineMax</h1>
+    <div id="auth-links">
+      <a href="login.html" id="login-link">Đăng nhập</a>
+      <a href="#" id="logout-link" style="display:none">Đăng xuất</a>
+      <a href="admin.html" id="admin-link" style="display:none">Admin</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="carousel" id="featured-movies"></section>
+    <section>
+      <h2>Phim phổ biến</h2>
+      <div id="list" class="movie-grid"></div>
+    </section>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

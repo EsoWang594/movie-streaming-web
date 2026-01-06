@@ -1,14 +1,19 @@
-<input id="u"><input id="p" type="password">
-<button onclick="login()">Login</button>
-<script>
-function login(){
- fetch('http://localhost:5000/api/auth/login',{
-  method:'POST',
-  headers:{'Content-Type':'application/json'},
-  body:JSON.stringify({username:u.value,password:p.value})
- }).then(r=>r.json()).then(d=>{
-  localStorage.token=d.token;
-  alert("OK");
- })
-}
-</script>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đăng nhập / Đăng ký</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Đăng nhập</h1>
+  <form id="login-form">
+    <input type="text" id="username" placeholder="Tên đăng nhập" required>
+    <input type="password" id="password" placeholder="Mật khẩu" required>
+    <button type="submit">Đăng nhập</button>
+  </form>
+  <p>Hoặc <a href="#" id="register-link">Đăng ký</a></p>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

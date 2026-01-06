@@ -1,14 +1,31 @@
-<input id="t" placeholder="Title">
-<button onclick="add()">Add</button>
-<script>
-function add(){
- fetch('http://localhost:5000/api/movies',{
-  method:'POST',
-  headers:{
-    'Content-Type':'application/json',
-    'Authorization':localStorage.token
-  },
-  body:JSON.stringify({title:t.value})
- })
-}
-</script>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Quản lý Phim</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <a href="index.html">Trang chủ</a>
+</header>
+
+<main>
+  <h1>Quản lý Phim</h1>
+  <form id="add-movie-form">
+    <input type="text" id="title" placeholder="Tên phim" required>
+    <input type="text" id="poster" placeholder="Link poster" required>
+    <input type="text" id="videoUrl" placeholder="Link video" required>
+    <textarea id="description" placeholder="Mô tả"></textarea>
+    <input type="text" id="genre" placeholder="Thể loại">
+    <input type="number" id="year" placeholder="Năm">
+    <button type="submit">Thêm phim</button>
+  </form>
+
+  <h2>Danh sách phim</h2>
+  <div id="admin-movie-list"></div>
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>
