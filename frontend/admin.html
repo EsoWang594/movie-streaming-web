@@ -1,0 +1,14 @@
+<input id="t" placeholder="Title">
+<button onclick="add()">Add</button>
+<script>
+function add(){
+ fetch('http://localhost:5000/api/movies',{
+  method:'POST',
+  headers:{
+    'Content-Type':'application/json',
+    'Authorization':localStorage.token
+  },
+  body:JSON.stringify({title:t.value})
+ })
+}
+</script>
